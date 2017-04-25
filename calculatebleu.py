@@ -31,12 +31,14 @@ def read_files(cand_name, ref_names):
                 temp_file = codecs.open(os.path.join(root, f), 'r', 'utf-8')
                 # print 'Reading %s' % os.path.join(root, f)
                 references.append(temp_file.readlines())
+                temp_file.close()
     else:
         temp_file = codecs.open(ref_names, 'r', 'utf-8')
         references.append(temp_file.readlines())
 
     temp_file = codecs.open(cand_name, 'r', 'utf-8')
     candidate = temp_file.readlines()
+    temp_file.close()
     return candidate, references
 
 
@@ -88,8 +90,8 @@ def count_ngram(candidate, references, n):
         for reference in references:
 
             curr_ref_sen = reference[sentence_i]
-            print'************\n\n'
-            print curr_ref_sen
+            # print'************\n\n'
+            # print curr_ref_sen
             word_list = curr_ref_sen.strip().split()
             ref_sen_lens.append(len(word_list))
 
@@ -142,6 +144,9 @@ def main():
     # print len(references)
     bleu_score = calc_BLEU(candidate, references)
 
-    print bleu_score
+    # print bleu_score
+    f_out =  open('bleu_out.txt','w')
+    f_out.write(str(bleu_score))
+    f_out.close()
 if __name__ == '__main__':
     main()
