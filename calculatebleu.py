@@ -150,3 +150,12 @@ def main():
     f_out.close()
 if __name__ == '__main__':
     main()
+
+
+'''[Executed at: Tue Apr 25 2:57:53 PDT 2017]
+
+Score for test case-1 : 1.0
+Score for test case-2 : 1.0
+Score for test case-3 : 1.0
+Score for test case-4 : 1.0
+'''
